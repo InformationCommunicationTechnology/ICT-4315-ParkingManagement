@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="accountSettings">
+    <option name="activeProfile" value="profile:guild-devops" />
+    <option name="activeRegion" value="us-west-2" />
+    <option name="recentlyUsedProfiles">
+      <list>
+        <option value="profile:guild-devops" />
+        <option value="profile:guild-financial-services" />
+      </list>
+    </option>
+    <option name="recentlyUsedRegions">
+      <list>
+        <option value="us-east-2" />
+      </list>
+    </option>
+  </component>
+</project>
