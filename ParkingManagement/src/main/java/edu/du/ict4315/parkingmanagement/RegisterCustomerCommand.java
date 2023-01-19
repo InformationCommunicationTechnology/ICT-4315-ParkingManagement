@@ -9,27 +9,62 @@ import java.util.Properties;
 
 /**
  *
- * @Date: 1/4/23
+ * @Date: 1/8/23
  * @author lutherchikumba
  *
  */
-public class RegisterCustomerCommand {
-    private ParkingOffice office;
+public class RegisterCustomerCommand implements Command {
 
-      public RegisterCustomerCommand(ParkingOffice office) {
+      private ParkingOffice office;
+      private String displayName;
+      private String commandName;
+      private Command command;
 
-          this.office = office;
+      public RegisterCustomerCommand() {
+
+            this.office = new ParkingOffice();
+            office.setParkingOfficeAddress(new Address("4581 S Valdai Way", "", "Aurora", "CO", "80016"));
+            office.setParkingOfficeName("DU");
+            this.displayName = "CustomerCommand";
+            this.commandName = "CommandCustomer";
       }
-    public void checkParameters(Properties properties){
+      public ParkingOffice getOffice() {
+            return office;
+      }
 
-    }
-    public String execute (Properties properties){
-        return null;
-    }
-    public  String getCommandName(){
-        return null;
-    }
-    public String getDisplayName(){
-        return null;
-    }
+      public void setOffice(ParkingOffice office) {
+            this.office = office;
+      }
+
+      public String getDisplayName() {
+            return displayName;
+      }
+
+      public void setDisplayName(String displayName) {
+            this.displayName = displayName;
+      }
+
+      public String getCommandName() {
+            return commandName;
+      }
+
+      public void setCommandName(String commandName) {
+            this.commandName = commandName;
+      }
+
+      public Command getCommand() {
+            return command;
+      }
+
+      public void setCommand(Command command) {
+            this.command = command;
+      }
+      public void checkParameters(Properties properties){
+
+      }
+
+      public String execute(Properties properties){
+            return null;
+      }
+
 }
