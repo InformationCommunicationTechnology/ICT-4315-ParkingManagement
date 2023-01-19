@@ -15,13 +15,7 @@ import java.util.Properties;
  */
 public interface Command {
 
-      public default String execute(Properties properties){
-            return null;
-      }
-      public default String getCommandName(){
-            return null;
-      }
-      public default String getDisplayName(){
-            return null;
-      }
+      String getCommandName();
+      String getDisplayName();
+      String execute(Properties params);
 }
