@@ -10,10 +10,8 @@ import edu.du.ict4315.parkingmanagement.VehicleType;
 import java.time.LocalDate;
 
 /**
- *
- * @Date: 1/20/23
  * @author lutherchikumba
- *
+ * @Date: 1/20/23
  */
 public class SUVMondayDiscount implements DiscountStrategy {
       private LocalDate date;
@@ -28,6 +26,7 @@ public class SUVMondayDiscount implements DiscountStrategy {
             this.strategyPercentage = strategyPercentage;
 
       }
+
       public boolean checkDate() {
             if ("MONDAY".equals(date.getDayOfWeek().toString())) {
                   return true;

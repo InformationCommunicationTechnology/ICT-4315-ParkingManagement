@@ -12,18 +12,16 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
- * @Date: 1/22/23
  * @author lutherchikumba
- *
+ * @Date: 1/22/23
  */
 public class SUVMondayDiscountTest {
-    private SUVMondayDiscount suvMondayDiscount;
-    private  LocalDate time;
+      private SUVMondayDiscount suvMondayDiscount;
+      private LocalDate time;
 
       public SUVMondayDiscountTest() {
-        this.suvMondayDiscount = new SUVMondayDiscount(LocalDate.of(2023, 1, 23), VehicleType.SUV,"suvMondayDiscount",0.40);
-        this.time = time;
+            this.suvMondayDiscount = new SUVMondayDiscount(LocalDate.of(2023, 1, 23), VehicleType.SUV, "suvMondayDiscount", 0.40);
+            this.time = time;
       }
 
       @Test
@@ -33,16 +31,16 @@ public class SUVMondayDiscountTest {
 
       @Test
       public void checkCarType() {
-          assertTrue(suvMondayDiscount.checkCarType());
+            assertTrue(suvMondayDiscount.checkCarType());
       }
 
       @Test
       public void getStrategyName() {
-          assertEquals("suvMondayDiscount",suvMondayDiscount.getStrategyName());
+            assertEquals("suvMondayDiscount", suvMondayDiscount.getStrategyName());
       }
 
       @Test
       public void getDiscount() {
-          assertEquals(0.40,suvMondayDiscount.getDiscount(VehicleType.SUV,LocalDate.of(2023, 1, 23)));
+            assertEquals(0.40, suvMondayDiscount.getDiscount(VehicleType.SUV, LocalDate.of(2023, 1, 23)));
       }
 }
