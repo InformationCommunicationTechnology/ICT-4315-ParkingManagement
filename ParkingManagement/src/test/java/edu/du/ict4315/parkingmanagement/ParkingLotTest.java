@@ -17,7 +17,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.du.ict4315.parkingmanagement.charges.strategy.CompactWeekendStrategy;
+import edu.du.ict4315.parkingmanagement.charges.strategy.DiscountStrategy;
+import edu.du.ict4315.parkingmanagement.charges.strategy.LaborDayDiscount;
+import edu.du.ict4315.parkingmanagement.charges.strategy.SUVMondayDiscount;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 /**
  * <b>Description:</b><br/>
@@ -132,4 +138,40 @@ class ParkingLotTest {
       }
 
 
+      @Test
+      public void testCompactWeekendDiscountStrategy() {
+            ParkingLot parkingLot = new ParkingLot();
+            DiscountStrategy discountStrategy = new CompactWeekendStrategy(LocalDate.of(2023, 1, 21),VehicleType.COMPACT,"CompactWeekendStrategy",0.20);
+            parkingLot.setLotType(ParkingLotType.TYPEA);
+            parkingLot.setName("Lot 1");
+            parkingLot.setId("001");
+            parkingLot.setDiscountStrategy( discountStrategy);
+
+            Money money = new Money(19.96, "$");
+            assertEquals(money.getAmount(), parkingLot.getDiscountRate(VehicleType.COMPACT, LocalDate.of(2023, 1, 21)).getAmount());
+      }
+      @Test
+      public void testSUVMondayDiscountStrategy() {
+            ParkingLot parkingLot = new ParkingLot();
+            DiscountStrategy discountStrategy = new SUVMondayDiscount(LocalDate.of(2023, 1, 23),VehicleType.SUV,"SUVMondayDiscount",0.20);
+            parkingLot.setLotType(ParkingLotType.TYPEA);
+            parkingLot.setName("Lot 1");
+            parkingLot.setId("001");
+            parkingLot.setDiscountStrategy( discountStrategy);
+
+            Money money = new Money(19.96, "$");
+            assertEquals(money.getAmount(), parkingLot.getDiscountRate(VehicleType.SUV, LocalDate.of(2023, 1, 23)).getAmount());
+      }
+      @Test
+      public void testLaborDayDiscountStrategy() {
+            ParkingLot parkingLot = new ParkingLot();
+            DiscountStrategy discountStrategy = new LaborDayDiscount(LocalDate.of(2023, 9, 4),"LaborDayDiscount",0.20);
+            parkingLot.setLotType(ParkingLotType.TYPEA);
+            parkingLot.setName("Lot 1");
+            parkingLot.setId("001");
+            parkingLot.setDiscountStrategy( discountStrategy);
+
+            Money money = new Money(19.96, "$");
+            assertEquals(money.getAmount(), parkingLot.getDiscountRate(VehicleType.COMPACT, LocalDate.of(2023, 9, 4)).getAmount());
+      }
 }
