@@ -5,6 +5,8 @@
  */
 package edu.du.ict4315.parkingmanagement;
 
+import edu.du.ict4315.parkingmanagement.builder.address.AddressInfo;
+
 import java.util.Properties;
 
 /**
@@ -23,7 +25,14 @@ public class RegisterCustomerCommand implements Command {
       public RegisterCustomerCommand() {
 
             this.office = new ParkingOffice();
-            office.setParkingOfficeAddress(new Address("4581 S Valdai Way", "", "Aurora", "CO", "80016"));
+            AddressInfo addressInfo = new AddressInfo.Builder()
+                    .street1("525 W Burgundy Street")
+                    .street2("Unit 622")
+                    .city("Highlands Ranch")
+                    .state("CO")
+                    .zip("80129")
+                    .build();
+            office.setParkingOfficeAddress(new Address(addressInfo));
             office.setParkingOfficeName("DU");
             this.displayName = "CustomerCommand";
             this.commandName = "CommandCustomer";

@@ -12,6 +12,8 @@ package edu.du.ict4315.parkingmanagement;
  *
  */
 
+import edu.du.ict4315.parkingmanagement.builder.address.AddressInfo;
+
 import java.util.regex.Pattern;
 
 /**
@@ -32,6 +34,7 @@ public class Address {
       private String city;
       private String state;
       private String zip;
+      private AddressInfo addressInfo;
 
 
 
@@ -47,19 +50,19 @@ public class Address {
        * Parameterized constructor, This constructor will set below parameters while
        * creating the instance.
        *
-       * @param street1, Address Stree1
-       * @param street2, Address Stree2
-       * @param city, Address City
-       * @param state, Address State
-       * @param zip, Address Zip
+       * @param street1, AddressInfo Stree1
+       * @param street2, AddressInfo Stree2
+       * @param city, AddressInfo City
+       * @param state, AddressInfo State
+       * @param zip, AddressInfo Zip
        */
-      public Address(String street1, String street2, String city, String state, String zip) {
+      public Address(AddressInfo addressInfo) {
             super();
-            this.street1 = street1;
-            this.street2 = street2;
-            this.city = city;
-            this.state = state;
-            this.zip = zip;
+            this.street1 = addressInfo.getStreet1();
+            this.street2 = addressInfo.getStreet2();
+            this.city = addressInfo.getCity();
+            this.state = addressInfo.getState();
+            this.zip = addressInfo.getZip();
 
       }
 
@@ -261,7 +264,7 @@ public class Address {
 
       @Override
       public String toString() {
-            return "Address [street1=" + street1 + ", street2=" + street2 + ", city=" + city + ", state=" + state + ", zip="
+            return "AddressInfo [street1=" + street1 + ", street2=" + street2 + ", city=" + city + ", state=" + state + ", zip="
                     + zip + "]";
       }
 

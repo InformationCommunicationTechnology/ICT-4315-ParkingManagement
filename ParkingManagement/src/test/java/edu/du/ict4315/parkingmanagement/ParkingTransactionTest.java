@@ -20,6 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Calendar;
 
+import edu.du.ict4315.parkingmanagement.builder.address.AddressInfo;
+import edu.du.ict4315.parkingmanagement.builder.customer.CustomerInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -51,19 +53,34 @@ class ParkingTransactionTest {
 
             transaction.setLot(parkingLot);
 
-            String id = "AB50439";
-            String firstName = "Anuj";
-            String lastName = "Patait";
-            String phoneNumber = "303-992-8712";
+//            String id = "AB50439";
+//            String firstName = "Anuj";
+//            String lastName = "Patait";
+//            String phoneNumber = "303-992-8712";
 
-            String street1 = "525 W Burgundy Street";
-            String street2 = "Unit 622";
-            String city = "Highlands Ranch";
-            String state = "CO";
-            String zip = "80129";
-            Address address = new Address(street1,street2,city,state,zip);
+//            String street1 = "525 W Burgundy Street";
+//            String street2 = "Unit 622";
+//            String city = "Highlands Ranch";
+//            String state = "CO";
+//            String zip = "80129";
+//            Address address = new Address(street1,street2,city,state,zip);
 
-            Customer customer = new Customer(id,firstName,lastName,address,phoneNumber);
+            AddressInfo addressInfo = new AddressInfo.Builder()
+                    .street1("525 W Burgundy Street")
+                    .street2("Unit 622")
+                    .city("Highlands Ranch")
+                    .state("CO")
+                    .zip("80129")
+                    .build();
+            CustomerInfo customerInfo = new CustomerInfo.Builder()
+                    .id("AB50439")
+                    .firstName("Anuj")
+                    .lastName("Patait")
+                    .phoneNumber("303-992-8712")
+                    .address(new Address(addressInfo))
+                    .build();
+
+            Customer customer = new Customer(customerInfo);
 
             Vehicle vehicle = new Vehicle();
             vehicle.setLicensePlate("JQL-311");
