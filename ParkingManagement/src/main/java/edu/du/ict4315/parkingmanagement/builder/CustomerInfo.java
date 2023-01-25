@@ -3,7 +3,7 @@
  * @Project: ParkingManagement
  * @Instructor: Mike Prasad
  */
-package edu.du.ict4315.parkingmanagement.builder.customer;
+package edu.du.ict4315.parkingmanagement.builder;
 
 import edu.du.ict4315.parkingmanagement.Address;
 
@@ -12,11 +12,11 @@ import edu.du.ict4315.parkingmanagement.Address;
  * @Date: 1/24/23
  */
 public class CustomerInfo {
-      private String id;
-      private String firstName;
-      private String lastName;
-      private String phoneNumber;
-      private Address address;
+      private final String id;
+      private final String firstName;
+      private final String lastName;
+      private final String phoneNumber;
+      private final Address address;
 
       private CustomerInfo(Builder builder) {
             this.id = builder.id;

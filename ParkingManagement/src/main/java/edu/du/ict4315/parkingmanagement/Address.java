@@ -12,7 +12,7 @@ package edu.du.ict4315.parkingmanagement;
  *
  */
 
-import edu.du.ict4315.parkingmanagement.builder.address.AddressInfo;
+import edu.du.ict4315.parkingmanagement.builder.AddressInfo;
 
 import java.util.regex.Pattern;
 

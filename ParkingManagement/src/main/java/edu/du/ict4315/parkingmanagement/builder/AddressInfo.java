@@ -3,7 +3,7 @@
  * @Project: ParkingManagement
  * @Instructor: Mike Prasad
  */
-package edu.du.ict4315.parkingmanagement.builder.address;
+package edu.du.ict4315.parkingmanagement.builder;
 
 /**
  * @author lutherchikumba
@@ -11,11 +11,11 @@ package edu.du.ict4315.parkingmanagement.builder.address;
  */
 public class AddressInfo {
 
-      private String street1;
-      private String street2;
-      private String city;
-      private String state;
-      private String zip;
+      private final String street1;
+      private final String street2;
+      private final String city;
+      private final String state;
+      private final String zip;
 
       private AddressInfo(Builder builder) {
             this.street1 = builder.street1;
@@ -68,7 +68,7 @@ public class AddressInfo {
                   return this;
             }
 
-            public  Builder state(String state){
+            public Builder state(String state) {
                   this.state = state;
                   return this;
             }

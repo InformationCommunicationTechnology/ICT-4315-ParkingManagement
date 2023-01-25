@@ -4,8 +4,6 @@ package edu.du.ict4315.parkingmanagement; /**
  * @Instructor: Mike Prasad
  */
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  *
  * @Date: 1/3/23
@@ -17,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.du.ict4315.parkingmanagement.builder.address.AddressInfo;
-import edu.du.ict4315.parkingmanagement.builder.customer.CustomerInfo;
+import edu.du.ict4315.parkingmanagement.builder.AddressInfo;
+import edu.du.ict4315.parkingmanagement.builder.CustomerInfo;
 import org.junit.jupiter.api.Test;
 
 /**

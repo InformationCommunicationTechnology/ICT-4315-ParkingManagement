@@ -12,7 +12,7 @@ package edu.du.ict4315.parkingmanagement;
  *
  */
 
-import edu.du.ict4315.parkingmanagement.builder.customer.CustomerInfo;
+import edu.du.ict4315.parkingmanagement.builder.CustomerInfo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

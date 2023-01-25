@@ -16,12 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  */
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Calendar;
 
-import edu.du.ict4315.parkingmanagement.builder.address.AddressInfo;
-import edu.du.ict4315.parkingmanagement.builder.customer.CustomerInfo;
+import edu.du.ict4315.parkingmanagement.builder.AddressInfo;
+import edu.du.ict4315.parkingmanagement.builder.CustomerInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
