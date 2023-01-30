@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  */
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Calendar;
 
+import edu.du.ict4315.parkingmanagement.builder.AddressInfo;
+import edu.du.ict4315.parkingmanagement.builder.CustomerInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,20 +46,36 @@ class TransactionManagerTest {
        */
       @BeforeEach
       void setUp() throws Exception {
-            //Setting up the Customer, vehicle and Parking manager information.
-            String id = "AB50439";
-            String firstName = "Anuj";
-            String lastName = "Patait";
-            String phoneNumber = "303-992-8712";
+            //Setting up the CustomerInfo, vehicle and Parking manager information.
+//            String id = "AB50439";
+//            String firstName = "Anuj";
+//            String lastName = "Patait";
+//            String phoneNumber = "303-992-8712";
 
-            String street1 = "525 W Burgundy Street";
-            String street2 = "Unit 622";
-            String city = "Highlands Ranch";
-            String state = "CO";
-            String zip = "80129";
-            Address address = new Address(street1,street2,city,state,zip);
+//            String street1 = "525 W Burgundy Street";
+//            String street2 = "Unit 622";
+//            String city = "Highlands Ranch";
+//            String state = "CO";
+//            String zip = "80129";
+//            Address address = new Address(street1,street2,city,state,zip);
 
-            customer = new Customer(id,firstName,lastName,address,phoneNumber);
+            AddressInfo addressInfo = new AddressInfo.Builder()
+                    .street1("525 W Burgundy Street")
+                    .street2("Unit 622")
+                    .city("Highlands Ranch")
+                    .state("CO")
+                    .zip("80129")
+                    .build();
+
+            CustomerInfo customerInfo = new CustomerInfo.Builder()
+                    .id("AB50439")
+                    .firstName("Anuj")
+                    .lastName("Patait")
+                    .phoneNumber("303-992-8712")
+                    .address(new Address(addressInfo))
+                    .build();
+
+            customer = new Customer(customerInfo);
 
             vehicle = new Vehicle();
             vehicle.setLicensePlate("JQL-311");
@@ -73,6 +89,7 @@ class TransactionManagerTest {
 
             //Set up parking Lot.
             lot = new ParkingLot();
+            Address address = new Address(addressInfo);
             lot.setAddress(address);
             lot.setId("Lot 1");
             lot.setLotType(ParkingLotType.TYPEA);

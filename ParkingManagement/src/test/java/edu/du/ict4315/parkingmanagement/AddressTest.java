@@ -21,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * <b>Description:</b><br/>
- * This is the JUnit test class for Address.java class. In this class we will
- * write all the test cases related to Address validation.
+ * This is the JUnit test class for AddressInfo.java class. In this class we will
+ * write all the test cases related to AddressInfo validation.
  *
  * <b>ModifiedOn:</b>&nbsp; N/A
  * <b>CreatedOn</b>&nbsp; 01/31/2020

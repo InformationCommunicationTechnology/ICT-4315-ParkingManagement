@@ -34,7 +34,7 @@ class ParkingOfficeTest {
       private ParkingOffice parkingOffice = null;
 
       /**
-       * This is the setup method we initialize the Customer, Address, and ParkingLot object.
+       * This is the setup method we initialize the CustomerInfo, AddressInfo, and ParkingLot object.
        * @throws Exception
        */
       @BeforeEach

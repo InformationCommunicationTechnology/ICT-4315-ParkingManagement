@@ -4,7 +4,10 @@ package edu.du.ict4315.parkingmanagement.charges.strategy; /**
  * @Instructor: Mike Prasad
  */
 
+import edu.du.ict4315.parkingmanagement.Money;
+import edu.du.ict4315.parkingmanagement.ParkingLotType;
 import edu.du.ict4315.parkingmanagement.VehicleType;
+import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.CompactWeekendDiscount;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -16,10 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * @Date: 1/22/23
  */
 public class CompactWeekendStrategyTest {
-      private CompactWeekendStrategy compactWeekendStrategy;
+      private final CompactWeekendDiscount compactWeekendStrategy;
+      private ParkingLotType lotType;
 
       public CompactWeekendStrategyTest() {
-            this.compactWeekendStrategy = new CompactWeekendStrategy(LocalDate.of(2023, 1, 21), VehicleType.COMPACT, "compactWeekendStrategy", 0.50);
+            this.compactWeekendStrategy = new CompactWeekendDiscount(LocalDate.of(2023, 1, 21), VehicleType.COMPACT, "compactWeekendStrategy", 0.50);
       }
 
       @Test
@@ -34,11 +38,12 @@ public class CompactWeekendStrategyTest {
 
       @Test
       public void getStrategyName() {
-            assertEquals("compactWeekendStrategy", compactWeekendStrategy.getStrategyName());
+            assertEquals("compactWeekendStrategy", compactWeekendStrategy.getStrategy());
       }
 
       @Test
       public void getDiscount() {
-            assertEquals(0.50, compactWeekendStrategy.getDiscount(VehicleType.COMPACT, LocalDate.of(2023, 1, 21)));
+
+            assertEquals(0.50, compactWeekendStrategy.getDiscountRate());
       }
 }

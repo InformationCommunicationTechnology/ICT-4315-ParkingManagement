@@ -12,7 +12,8 @@ package edu.du.ict4315.parkingmanagement;
  *
  */
 
-import java.util.HashMap;
+import edu.du.ict4315.parkingmanagement.builder.CustomerInfo;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,12 +55,12 @@ public class Customer {
        * @param vehicleMap
        */
 
-      public Customer(String id, String firstName, String lastName, Address address, String phoneNumber) {
-            this.id = id;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.phoneNumber = phoneNumber;
-            this.address = address;
+      public Customer(CustomerInfo customerInfo) {
+            this.id = customerInfo.getId();
+            this.firstName = customerInfo.getFirstName();
+            this.lastName = customerInfo.getLastName();
+            this.phoneNumber = customerInfo.getPhoneNumber();
+            this.address = customerInfo.getAddress();
 
       }
       /**
@@ -81,7 +82,7 @@ public class Customer {
       }
 
       /**
-       * This method is the getter method for First Name.
+       * This method is the getter method for First Builder.
        * @return the firstName
        */
       public String getFirstName() {
@@ -89,7 +90,7 @@ public class Customer {
       }
 
       /**
-       * This is the setter method for First Name.
+       * This is the setter method for First Builder.
        * @param firstName the firstName to set
        *
        */
@@ -99,7 +100,7 @@ public class Customer {
       }
 
       /**
-       * This method is the getter method for Last  Name.
+       * This method is the getter method for Last  Builder.
        * @return the lastName
        */
       public String getLastName() {
@@ -107,7 +108,7 @@ public class Customer {
       }
 
       /**
-       * This is the setter method for Last Name.
+       * This is the setter method for Last Builder.
        * @param lastName the lastName to set.
        *
        */
@@ -117,7 +118,7 @@ public class Customer {
       }
 
       /**
-       * This method is the getter method for Address.
+       * This method is the getter method for AddressInfo.
        * @return the address
        */
       public Address getAddress() {
@@ -125,7 +126,7 @@ public class Customer {
       }
 
       /**
-       * This is the setter method for Address.
+       * This is the setter method for AddressInfo.
        * @param address the address to set.
        *
        */
@@ -159,15 +160,15 @@ public class Customer {
       public String getCustomerInfo() {
             String customerInfo = null;
 
-            customerInfo ="ID: "+ id +"\nName: "+ getCustomerName() +"\nPhone Number: "+ getPhoneNumber() +
-                    "\nAddress: "+ address.getAddressInfo();
+            customerInfo ="ID: "+ id +"\nBuilder: "+ getCustomerName() +"\nPhone Number: "+ getPhoneNumber() +
+                    "\nAddressInfo: "+ address.getAddressInfo();
 
             return customerInfo;
       }
 
       /**
        * This method concatenate first name and last name using a space.
-       * @return  String, Customer Full Name.
+       * @return  String, CustomerInfo Full Builder.
        */
       public String getCustomerName() {
             String name = null;
@@ -196,7 +197,7 @@ public class Customer {
       }
 
       /**
-       * This method validate if First Name is null or empty. If the first name
+       * This method validate if First Builder is null or empty. If the first name
        * is neither null or empty then the method will return TRUE else FALSE.
        * @return boolean, Validation Result
        */
@@ -212,7 +213,7 @@ public class Customer {
       }
 
       /**
-       * This method validate if Last Name is null or empty. If the last name
+       * This method validate if Last Builder is null or empty. If the last name
        * is neither null or empty then the method will return TRUE else FALSE.
        * @return Boolean, Validation Result
        */
@@ -254,7 +255,7 @@ public class Customer {
 
       @Override
       public String toString() {
-            return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+            return "CustomerInfo [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
                     + phoneNumber + ", address=" + address + "]";
       }
 

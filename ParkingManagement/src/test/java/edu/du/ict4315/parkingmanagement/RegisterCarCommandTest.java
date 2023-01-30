@@ -4,6 +4,7 @@ package edu.du.ict4315.parkingmanagement; /**
  * @Instructor: Mike Prasad
  */
 
+import edu.du.ict4315.parkingmanagement.builder.AddressInfo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,8 +24,15 @@ public class RegisterCarCommandTest {
 
       @Test
       public void getOffice() {
+            AddressInfo addressInfo = new AddressInfo.Builder()
+                    .street1("525 W Burgundy Street")
+                    .street2("Unit 622")
+                    .city("Highlands Ranch")
+                    .state("CO")
+                    .zip("80129")
+                    .build();
           assertEquals("DU",registerCarCommand.getOffice().getParkingOfficeName());
-          assertEquals(new Address("4581 S Valdai Way", "", "Aurora", "CO", "80016").getAddressInfo(),registerCarCommand.getOffice().getParkingOfficeAddress().getAddressInfo());
+          assertEquals(new Address(addressInfo).getAddressInfo(),registerCarCommand.getOffice().getParkingOfficeAddress().getAddressInfo());
       }
 
       @Test

@@ -126,7 +126,7 @@ public class ParkingOffice {
       /**
        * This method will remove the customer from parking office.
        * @param customer
-       * @return Removed Customer
+       * @return Removed CustomerInfo
        */
       public Customer removeCustomer(Customer customer) {
             Customer removeCustomer = customers.remove(customer.getId());
@@ -138,7 +138,7 @@ public class ParkingOffice {
        * This method will get the customer information from the customer map.
        *
        * @param customerId
-       * @return Customer Object
+       * @return CustomerInfo Object
        */
       public Customer getCustomer(String customerId) {
             Customer customer = customers.get(customerId);

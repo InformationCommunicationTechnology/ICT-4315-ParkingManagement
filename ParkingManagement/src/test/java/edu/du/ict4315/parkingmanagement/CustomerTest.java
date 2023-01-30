@@ -4,8 +4,6 @@ package edu.du.ict4315.parkingmanagement; /**
  * @Instructor: Mike Prasad
  */
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  *
  * @Date: 1/3/23
@@ -17,12 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.du.ict4315.parkingmanagement.builder.AddressInfo;
+import edu.du.ict4315.parkingmanagement.builder.CustomerInfo;
 import org.junit.jupiter.api.Test;
 
 /**
  * @Description
- * This is the JUnit test class for Customer.java class. In this class we will
- * write all the test cases related to Customer validation.
+ * This is the JUnit test class for CustomerInfo.java class. In this class we will
+ * write all the test cases related to CustomerInfo validation.
  *
  * @ModifiedOn N/A
  * @CreatedOn 01/31/2020
@@ -33,44 +33,57 @@ import org.junit.jupiter.api.Test;
 class CustomerTest {
 
       /**
-       * This test case will validate the Customer information when all the required fields are present.
+       * This test case will validate the CustomerInfo information when all the required fields are present.
        *
-       * <b>Result:</b>&nbsp; Pass when the executor will get Customer information in below format.
+       * <b>Result:</b>&nbsp; Pass when the executor will get CustomerInfo information in below format.
        * 			"ID: Value\n" +
-       "Name: Value\n" +
+       "Builder: Value\n" +
        "Phone Number: Value\n" +
-       "Address: Value\n"
+       "AddressInfo: Value\n"
        */
       @Test
       void testCustomerInfoWithValidFields() {
 
-            String id = "AB50439";
-            String firstName = "Anuj";
-            String lastName = "Patait";
-            String phoneNumber = "303-992-8712";
+//            String id = "AB50439";
+//            String firstName = "Anuj";
+//            String lastName = "Patait";
+//            String phoneNumber = "303-992-8712";
 
-            String street1 = "525 W Burgundy Street";
-            String street2 = "Unit 622";
-            String city = "Highlands Ranch";
-            String state = "CO";
-            String zip = "80129";
-            Address address = new Address(street1,street2,city,state,zip);
+//            String street1 = "525 W Burgundy Street";
+//            String street2 = "Unit 622";
+//            String city = "Highlands Ranch";
+//            String state = "CO";
+//            String zip = "80129";
 
-            Customer customer = new Customer(id,firstName,lastName,address,phoneNumber);
+            AddressInfo addressInfo = new AddressInfo.Builder()
+                    .street1("525 W Burgundy Street")
+                    .street2("Unit 622")
+                    .city("Highlands Ranch")
+                    .state("CO")
+                    .zip("80129")
+                    .build();
+            CustomerInfo customerInfo = new CustomerInfo.Builder()
+                    .id("AB50439")
+                    .firstName("Anuj")
+                    .lastName("Patait")
+                    .phoneNumber("303-992-8712")
+                    .address(new Address(addressInfo))
+                    .build();
+
+            Customer customer = new Customer(customerInfo);
 
             String expected = "ID: AB50439\n" +
-                    "Name: Anuj Patait\n" +
+                    "Builder: Anuj Patait\n" +
                     "Phone Number: 303-992-8712\n" +
-                    "Address: 525 W Burgundy Street, Unit 622, Highlands Ranch, CO, 80129"
-                    ;
+                    "AddressInfo: 525 W Burgundy Street, Unit 622, Highlands Ranch, CO, 80129";
             assertEquals(expected, customer.getCustomerInfo());
 
       }
 
       /**
-       * This test case will validate the Customer Name when all the required fields are present.
+       * This test case will validate the CustomerInfo Builder when all the required fields are present.
        *
-       * <b>Result:</b>&nbsp; Pass when the executor will get Customer information in below format.
+       * <b>Result:</b>&nbsp; Pass when the executor will get CustomerInfo information in below format.
        * 			"FirstName LastName"
        */
       @Test

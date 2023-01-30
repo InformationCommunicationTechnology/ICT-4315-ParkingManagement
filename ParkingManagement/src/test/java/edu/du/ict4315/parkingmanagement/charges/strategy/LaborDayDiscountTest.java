@@ -5,6 +5,7 @@ package edu.du.ict4315.parkingmanagement.charges.strategy; /**
  */
 
 import edu.du.ict4315.parkingmanagement.VehicleType;
+import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.LaborDayDiscount;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -34,12 +35,12 @@ public class LaborDayDiscountTest {
       }
 
       @Test
-      public void getStrategyName() {
-            assertEquals("laborDayDiscount", laborDayDiscount.getStrategyName());
+      public void getStrategy() {
+            assertEquals("laborDayDiscount", laborDayDiscount.getStrategy());
       }
 
       @Test
       public void getDiscount() {
-            assertEquals(0.30, laborDayDiscount.getDiscount(VehicleType.COMPACT, LocalDate.now()));
+            assertEquals(0.30, laborDayDiscount.getDiscountRate());
       }
 }
