@@ -3,9 +3,9 @@
  * @Project: ParkingManagement
  * @Instructor: Mike Prasad
  */
-package edu.du.ict4315.parkingmanagement.charges.strategy;
+package edu.du.ict4315.parkingmanagement.factory.strategy.charges;
 
-import com.sun.jdi.CharType;
+import edu.du.ict4315.parkingmanagement.Money;
 import edu.du.ict4315.parkingmanagement.VehicleType;
 
 import java.time.LocalDate;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
  * @author lutherchikumba
  *
  */
-public interface DiscountStrategy {
-      String  getStrategyName();
-      Double getDiscount(VehicleType vehicleType, LocalDate Time);
+public interface ParkingChargeStrategy {
+      String  getStrategy();
+      Money getDiscountRate();
 }

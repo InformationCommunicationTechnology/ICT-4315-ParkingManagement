@@ -3,9 +3,12 @@
  * @Project: ParkingManagement
  * @Instructor: Mike Prasad
  */
-package edu.du.ict4315.parkingmanagement.charges.strategy;
+package edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount;
 
+import edu.du.ict4315.parkingmanagement.Money;
+import edu.du.ict4315.parkingmanagement.ParkingLotType;
 import edu.du.ict4315.parkingmanagement.VehicleType;
+import edu.du.ict4315.parkingmanagement.factory.strategy.charges.ParkingChargeStrategy;
 
 import java.time.LocalDate;
 
@@ -13,11 +16,12 @@ import java.time.LocalDate;
  * @author lutherchikumba
  * @Date: 1/20/23
  */
-public class SUVMondayDiscount implements DiscountStrategy {
-      private LocalDate date;
-      private VehicleType vehicleType;
-      private String SUVMondayDiscount;
-      private double strategyPercentage;
+public class SUVMondayDiscount implements ParkingChargeStrategy {
+      private final LocalDate date;
+      private final VehicleType vehicleType;
+      private final String SUVMondayDiscount;
+      private final double strategyPercentage;
+      private ParkingLotType lotType;
 
       public SUVMondayDiscount(LocalDate date, VehicleType vehicleType, String SUVMondayDiscount, double strategyPercentage) {
             this.date = date;
@@ -45,16 +49,21 @@ public class SUVMondayDiscount implements DiscountStrategy {
       }
 
       @Override
-      public String getStrategyName() {
+      public String getStrategy() {
             return SUVMondayDiscount;
       }
 
       @Override
-      public Double getDiscount(VehicleType vehicleType, LocalDate Time) {
-            if (checkCarType() && ("MONDAY".equals(Time.getDayOfWeek().toString()))) {
-                  return strategyPercentage;
+      public Money getDiscountRate() {
+            Money money = new Money();
+            money.setCurrency("$");
+            double base_rate = lotType.getRate();
+            if (checkDate()) {
+                  double discountRate = base_rate -(( strategyPercentage/100) * base_rate);
+                  money.setAmount(discountRate);
+                  return money;
             } else {
-                  throw new IllegalArgumentException("Not qualified for the discount");
+                  throw new IllegalArgumentException("Today is not labor day");
             }
       }
 }

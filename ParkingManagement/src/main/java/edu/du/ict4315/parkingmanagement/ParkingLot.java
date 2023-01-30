@@ -6,16 +6,15 @@
 package edu.du.ict4315.parkingmanagement;
 
 /**
- *
  * @Date: 12/29/22
  * @author lutherchikumba
- *
  */
 /**
  *
  */
 
-import edu.du.ict4315.parkingmanagement.charges.strategy.DiscountStrategy;
+import edu.du.ict4315.parkingmanagement.factory.strategy.FactoryParkingCharges;
+import edu.du.ict4315.parkingmanagement.factory.strategy.charges.ParkingChargeStrategy;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -41,8 +40,8 @@ public class ParkingLot {
       private Address address;
       private ParkingLotType lotType;
 
-      private DiscountStrategy discountStrategy;
-      private  LocalDate date;
+      private ParkingChargeStrategy parkingChargeStrategy;
+      private LocalDate date;
 
       /**
        * Default Constructor, We will use this constructor create instances
@@ -60,12 +59,12 @@ public class ParkingLot {
        * @param name
        * @param address
        */
-      public ParkingLot(String id, String name, Address address, DiscountStrategy discountStrategy) {
+      public ParkingLot(String id, String name, Address address, ParkingChargeStrategy parkingChargeStrategy) {
             super();
             this.id = id;
             this.name = name;
             this.address = address;
-            this.discountStrategy = discountStrategy;
+            this.parkingChargeStrategy = parkingChargeStrategy;
       }
 
       /**
@@ -140,12 +139,12 @@ public class ParkingLot {
             this.lotType = lotType;
       }
 
-      public DiscountStrategy getDiscountStrategy() {
-            return discountStrategy;
+      public ParkingChargeStrategy getParkingChargeStrategy() {
+            return parkingChargeStrategy;
       }
 
-      public void setDiscountStrategy(DiscountStrategy discountStrategy) {
-            this.discountStrategy = discountStrategy;
+      public void setParkingChargeStrategy(ParkingChargeStrategy parkingChargeStrategy) {
+            this.parkingChargeStrategy = parkingChargeStrategy;
       }
 
       /**
@@ -165,24 +164,39 @@ public class ParkingLot {
 
       }
 
-      public Money getDiscountRate(VehicleType vehicleType, LocalDate Time) {
-            Money money = new Money();
-            date = date.now();
-            money.setCurrency("$");
-            double base_rate = lotType.getRate();
-            if(vehicleType.equals(VehicleType.COMPACT)){
-                  double discountRate = base_rate -(( discountStrategy.getDiscount(vehicleType,Time) /100) * base_rate);
-                  money.setAmount(discountRate);
-            }else if(vehicleType.equals(VehicleType.SUV)){
-                  double discountRate = base_rate -(( discountStrategy.getDiscount(vehicleType,Time) /100) * base_rate);
-                  money.setAmount(discountRate);
-            }else if(Time.equals(date.with(firstInMonth(DayOfWeek.MONDAY)).equals(true) && date.getMonth().toString().equals("September"))){
-                  double discountRate = base_rate -(( discountStrategy.getDiscount(vehicleType,Time) /100) * base_rate);
-                  money.setAmount(discountRate);
-            }
-            return money;
-      }
+//      public Money getDiscountRate(VehicleType vehicleType, LocalDate Time) {
+//            Money money = new Money();
+//            date = date.now();
+//            money.setCurrency("$");
+//            double base_rate = lotType.getRate();
+//            if(vehicleType.equals(VehicleType.COMPACT)){
+//                  double discountRate = base_rate -(( parkingChargeStrategy.getDiscount(vehicleType,Time) /100) * base_rate);
+//                  money.setAmount(discountRate);
+//            }else if(vehicleType.equals(VehicleType.SUV)){
+//                  double discountRate = base_rate -(( parkingChargeStrategy.getDiscount(vehicleType,Time) /100) * base_rate);
+//                  money.setAmount(discountRate);
+//            }else if(Time.equals(date.with(firstInMonth(DayOfWeek.MONDAY)).equals(true) && date.getMonth().toString().equals("September"))){
+//                  double discountRate = base_rate -(( parkingChargeStrategy.getDiscount(vehicleType,Time) /100) * base_rate);
+//                  money.setAmount(discountRate);
+//            }
+//
+//            return money;
+//      }
 
+      public Money getDiscountRate(String strategyName, double discountStrategy) {
+            FactoryParkingCharges factoryParkingCharges = new FactoryParkingCharges();
+            Money money = new Money();
+            if (parkingChargeStrategy.getStrategy().equals(strategyName)) {
+                  ParkingChargeStrategy parkingChargeStrategy = factoryParkingCharges.makeStrategy(strategyName, discountStrategy);
+                  if (parkingChargeStrategy != null) {
+                        money = parkingChargeStrategy.getDiscountRate();
+                  }
+                  return money;
+            } else {
+                  throw new IllegalArgumentException("Today is not " + strategyName);
+            }
+
+      }
 
 
       /**
@@ -232,7 +246,7 @@ public class ParkingLot {
 
       @Override
       public String toString() {
-            return "ParkingLot [id=" + id + ", name=" + name + ", address=" + address + ", discountStrategy" + discountStrategy + "]";
+            return "ParkingLot [id=" + id + ", name=" + name + ", address=" + address + ", discountStrategy" + parkingChargeStrategy + "]";
       }
 }
 

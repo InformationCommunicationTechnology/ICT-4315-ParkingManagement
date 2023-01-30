@@ -5,6 +5,7 @@ package edu.du.ict4315.parkingmanagement.charges.strategy; /**
  */
 
 import edu.du.ict4315.parkingmanagement.VehicleType;
+import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.SUVMondayDiscount;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -35,12 +36,12 @@ public class SUVMondayDiscountTest {
       }
 
       @Test
-      public void getStrategyName() {
-            assertEquals("suvMondayDiscount", suvMondayDiscount.getStrategyName());
+      public void getStrategy() {
+            assertEquals("suvMondayDiscount", suvMondayDiscount.getStrategy());
       }
 
       @Test
       public void getDiscount() {
-            assertEquals(0.40, suvMondayDiscount.getDiscount(VehicleType.SUV, LocalDate.of(2023, 1, 23)));
+            assertEquals(0.40, suvMondayDiscount.getDiscountRate());
       }
 }

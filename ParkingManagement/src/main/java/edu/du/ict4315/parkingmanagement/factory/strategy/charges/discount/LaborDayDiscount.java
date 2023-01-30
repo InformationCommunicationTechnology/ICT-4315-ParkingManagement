@@ -3,13 +3,14 @@
  * @Project: ParkingManagement
  * @Instructor: Mike Prasad
  */
-package edu.du.ict4315.parkingmanagement.charges.strategy;
+package edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount;
 
+import edu.du.ict4315.parkingmanagement.Money;
+import edu.du.ict4315.parkingmanagement.ParkingLotType;
 import edu.du.ict4315.parkingmanagement.VehicleType;
+import edu.du.ict4315.parkingmanagement.factory.strategy.charges.ParkingChargeStrategy;
 
 import java.time.LocalDate;
-
-import static java.time.temporal.TemporalAdjusters.firstInMonth;
 
 import java.time.DayOfWeek;
 import java.time.temporal.TemporalAdjusters;
@@ -18,10 +19,11 @@ import java.time.temporal.TemporalAdjusters;
  * @author lutherchikumba
  * @Date: 1/22/23
  */
-public class LaborDayDiscount implements DiscountStrategy {
+public class LaborDayDiscount implements ParkingChargeStrategy {
       private LocalDate date;
-      private String laborDayStrategy;
-      private double strategyPercentage;
+      private final String laborDayStrategy;
+      private final double strategyPercentage;
+      private ParkingLotType lotType;
 
       public LaborDayDiscount(LocalDate date, String laborDayStrategy, double strategyPercentage) {
             this.date = date;
@@ -40,14 +42,19 @@ public class LaborDayDiscount implements DiscountStrategy {
       }
 
       @Override
-      public String getStrategyName() {
+      public String getStrategy() {
             return laborDayStrategy;
       }
 
       @Override
-      public Double getDiscount(VehicleType vehicleType, LocalDate Time) {
+      public Money getDiscountRate() {
+            Money money = new Money();
+            money.setCurrency("$");
+            double base_rate = lotType.getRate();
             if (checkDate()) {
-                  return strategyPercentage;
+                  double discountRate = base_rate -(( strategyPercentage/100) * base_rate);
+                  money.setAmount(discountRate);
+                  return money;
             } else {
                   throw new IllegalArgumentException("Today is not labor day");
             }
