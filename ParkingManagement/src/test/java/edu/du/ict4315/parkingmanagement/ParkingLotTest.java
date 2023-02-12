@@ -15,10 +15,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.CompactWeekendDiscount;
-import edu.du.ict4315.parkingmanagement.factory.strategy.charges.ParkingChargeStrategy;
-import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.LaborDayDiscount;
-import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.SUVMondayDiscount;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.discount.CompactWeekendDiscount;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.ParkingChargeStrategy;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.discount.LaborDayDiscount;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.discount.SUVMondayDiscount;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
