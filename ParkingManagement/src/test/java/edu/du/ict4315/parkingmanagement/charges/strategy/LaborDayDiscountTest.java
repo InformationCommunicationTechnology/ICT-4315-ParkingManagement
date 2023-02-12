@@ -4,8 +4,7 @@ package edu.du.ict4315.parkingmanagement.charges.strategy; /**
  * @Instructor: Mike Prasad
  */
 
-import edu.du.ict4315.parkingmanagement.VehicleType;
-import edu.du.ict4315.parkingmanagement.factory.strategy.charges.discount.LaborDayDiscount;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.discount.LaborDayDiscount;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

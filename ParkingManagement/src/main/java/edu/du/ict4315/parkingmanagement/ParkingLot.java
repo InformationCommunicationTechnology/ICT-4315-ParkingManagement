@@ -13,13 +13,10 @@ package edu.du.ict4315.parkingmanagement;
  *
  */
 
-import edu.du.ict4315.parkingmanagement.factory.strategy.FactoryParkingCharges;
-import edu.du.ict4315.parkingmanagement.factory.strategy.charges.ParkingChargeStrategy;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.FactoryParkingCharges;
+import edu.du.ict4315.parkingmanagement.charges.strategy.charges.factory.ParkingChargeStrategy;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
-
-import static java.time.temporal.TemporalAdjusters.firstInMonth;
 
 /**
  * <b>Description:</b><br>
